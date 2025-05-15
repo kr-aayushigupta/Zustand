@@ -1,5 +1,4 @@
 import { create } from 'zustand'
-
 export interface CartItem {
   id: string
   title: string
@@ -7,7 +6,6 @@ export interface CartItem {
   quantity: number
   image?: string
 }
-
 interface CartStore {
   items: CartItem[]
   addToCart: (item: CartItem) => void
@@ -20,29 +18,46 @@ interface CartStore {
 }
 
 export const useCartStore = create<CartStore>((set, get) => ({
-  items: [],
+  items: [], //initial state
 
-  addToCart: (item) => {
-    const { items } = get()
-    const existing = items.find((i) => i.id === item.id)
+  addToCart:(item)=>{
+    const {items} =get();
+    const existing =items.find((i)=>{
+      i.id===item.id
+    })
 
-    if (existing) {
+    // if item is already in cart then - just increase the quantity
+    if(existing){
       set({
-        items: items.map((i) =>
+        items:items.map((i)=>
           i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
-        ),
+        )
       })
-    } else {
-      set({ items: [...items, { ...item, quantity: 1 }] })
     }
-  },
+    else{
+      set({items :[...items, { ...item, quantity: 1 }] })
+    }
 
+  },
+  // addToCart: (item) => {
+  //   const { items } = get()
+  //   const existing = items.find((i) => i.id === item.id)
+
+  //   if (existing) {
+  //     set({
+  //       items: items.map((i) =>
+  //         i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
+  //       ),
+  //     })
+  //   } else {
+  //     set({ items: [...items, { ...item, quantity: 1 }] })
+  //   }
+  // },
   removeFromCart: (id) => {
     set((state) => ({
       items: state.items.filter((item) => item.id !== id),
     }))
   },
-
   increaseQty: (id) => {
     set((state) => ({
       items: state.items.map((item) =>
@@ -50,7 +65,6 @@ export const useCartStore = create<CartStore>((set, get) => ({
       ),
     }))
   },
-
   decreaseQty: (id) => {
     set((state) => ({
       items: state.items
@@ -62,9 +76,7 @@ export const useCartStore = create<CartStore>((set, get) => ({
         .filter((item) => item.quantity > 0),
     }))
   },
-
   clearCart: () => set({ items: [] }),
-
   totalItems: 0,
   totalPrice: 0,
 }))

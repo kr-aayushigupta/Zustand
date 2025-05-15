@@ -1,6 +1,7 @@
 "use client"
-import Cart from "./componets/cart"
-import ProductCard from "./componets/productCard"
+import Cart from "./components/cart"
+import ProductCard from "./components/productCard"
+import Link from "next/link"
 
 const sampleProducts = [
   { id: '1', title: 'Laptop', price: 10000, image: '/computer.jpg' },
@@ -14,12 +15,13 @@ const sampleProducts = [
 export default function HomePage() {
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold mb-6 text-center">Products</h1>
+      <div className="flex justify-around items-center gap-4">
+      <Link href={"/"}> <h1 className="text-2xl font-bold mb-6 text-center hover:bg-white/25 hover:cursor-pointer px-4 py-2">Products</h1></Link>
+      <Link href={"/bears"}> <h1 className="text-2xl font-bold mb-6 text-center hover:bg-white/25 hover:cursor-pointer px-4 py-2">Bears</h1></Link>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {sampleProducts.map((product) => (
-
           <ProductCard key={product.id} product={product} /> //pass product as props
-          
         ))}
       </div>
       <Cart/>

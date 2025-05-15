@@ -1,13 +1,13 @@
 import { create } from 'zustand'
 
-type coutnerStore = {
+type counterStore = {
     count : number
     increase : ()  => void
     decrease : ()  => void
     reset : () => void
 }
 
-export const useCounterStore = create<coutnerStore>((set) => ({
+export const useCounterStore = create<counterStore>((set) => ({
     count : 0,
     increase: () => set((state)=> ({
         count : state.count+1

@@ -15,7 +15,7 @@ export default function Cart() {
         <p>Your cart is empty</p>
       ) : (
         <>
-        <p onClick={() => clearCart()} className="text-red-500 hover:cursor-pointer hover:text-red-300">Clear All item </p>
+        <p onClick={() => clearCart()} className="text-red-500 hover:cursor-pointer hover:text-red-300">Empty cart </p>
           {items.map((item) => (
             <div key={item.id} className="flex items-center justify-between mb-4">
               <div>
