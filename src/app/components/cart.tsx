@@ -3,7 +3,6 @@ import { useCartStore } from '../store/cartStore'
 
 export default function Cart() {
   const { items, removeFromCart, increaseQty, decreaseQty , clearCart, totalItems} = useCartStore()
-
   const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0)
 
   return (
@@ -35,6 +34,7 @@ export default function Cart() {
           <button className="mt-2 w-full bg-green-600 text-white py-2 rounded">Checkout</button>
         </>
       )}
+      
     </div>
   )
 }

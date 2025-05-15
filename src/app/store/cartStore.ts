@@ -25,7 +25,6 @@ export const useCartStore = create<CartStore>((set, get) => ({
     const existing =items.find((i)=>{
       i.id===item.id
     })
-
     // if item is already in cart then - just increase the quantity
     if(existing){
       set({
@@ -37,27 +36,15 @@ export const useCartStore = create<CartStore>((set, get) => ({
     else{
       set({items :[...items, { ...item, quantity: 1 }] })
     }
-
   },
-  // addToCart: (item) => {
-  //   const { items } = get()
-  //   const existing = items.find((i) => i.id === item.id)
 
-  //   if (existing) {
-  //     set({
-  //       items: items.map((i) =>
-  //         i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
-  //       ),
-  //     })
-  //   } else {
-  //     set({ items: [...items, { ...item, quantity: 1 }] })
-  //   }
-  // },
   removeFromCart: (id) => {
     set((state) => ({
       items: state.items.filter((item) => item.id !== id),
     }))
   },
+
+  
   increaseQty: (id) => {
     set((state) => ({
       items: state.items.map((item) =>
@@ -65,6 +52,8 @@ export const useCartStore = create<CartStore>((set, get) => ({
       ),
     }))
   },
+
+  // decrease the qty by 1
   decreaseQty: (id) => {
     set((state) => ({
       items: state.items
@@ -76,7 +65,8 @@ export const useCartStore = create<CartStore>((set, get) => ({
         .filter((item) => item.quantity > 0),
     }))
   },
-  clearCart: () => set({ items: [] }),
+  // empty the cart
+  clearCart: () => set({ items:[]}),
   totalItems: 0,
   totalPrice: 0,
 }))

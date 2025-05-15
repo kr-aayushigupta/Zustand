@@ -1,27 +1,29 @@
-"use client";
+"use client"
+import Cart from "@/app/components/cart"
+import AppleCard from "@/app/components/AppleCard"
+import Link from "next/link"
 
-import { useAppleStore } from "../store/AppleStore";
-export default function AppleCounter() {
-  const apples = useAppleStore((state) => state.Apples);
-  const increase = useAppleStore((state) => state.increase);
-  const reset = useAppleStore((state) => state.reset);
-  const decrease=useAppleStore((state)=>state.decrease)
+const sampleProducts = [
+  { id: '1', title: 'MacBook', price: 89999, image: '/computer.jpg' },
+  { id: '2', title: 'Airpods Max', price: 999, image: '/headphones.jpg' },
+  { id: '3', title: 'IPhone', price: 21999, image: '/mobile.jpg' },
+  { id: '4', title: 'Ipad', price: 14999, image: '/ipad.jpg' },
+  { id: '5', title: 'Apple Speakers', price: 6999, image: '/speakers.jpg' },
+  { id: '6', title: 'Airpods', price: 11999, image: '/airpods.jpg' },
+]
 
+export default function Page() {
   return (
-    <div className="mt-10">
-         
-      <p className="text-white text-2xl text-center font-semibold">Apples : {apples}</p>
-      <div className="flex justify-center gap-4 mt-8">
-      <button onClick={increase} className="btn text-white bg-green-600 hover:cursor-pointer hover:bg-green-500 rounded-md px-4 py-2">
-        ADD 
-      </button>
-      <button onClick={decrease} className="btn text-white bg-green-600 hover:cursor-pointer hover:bg-green-500 rounded-md px-4 py-2">
-        REMOVE 
-      </button>
-      <button onClick={reset} className="btn text-white bg-green-600 hover:cursor-pointer hover:bg-green-500 rounded-md px-4 py-2">
-        RESET
-      </button>
+    <div className="p-6">
+      
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-4">
+        {sampleProducts.map((product) => (
+          <AppleCard key={product.id} product={product} /> //pass product as props
+        ))}
       </div>
+      <Cart/>
     </div>
-  );
+  )
 }
+
+
