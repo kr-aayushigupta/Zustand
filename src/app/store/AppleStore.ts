@@ -23,56 +23,53 @@ export interface AppleItem {
   image?: string
 }
 interface AppleStore {
-  items: AppleItem[]
+  itemsApple: AppleItem[]
   addToApple: (item: AppleItem) => void
   removeFromApple: (id: string) => void
   clearApple: () => void
-  increaseQty: (id: string) => void
-  decreaseQty: (id: string) => void
-  totalItems: number
-  totalPrice: number
+  increaseQtyApple: (id: string) => void
+  decreaseQtyApple: (id: string) => void
+  totalItemsApple: number
+  totalPriceApple: number
 }
 
 export const useAppleStore = create<AppleStore>((set, get) => ({
-  items: [], //initial state
+  itemsApple: [], //initial state
 
-  addToApple:(item)=>{
-    const {items} =get();
-    const existing =items.find((i)=>{
-      i.id===item.id
-    })
-    // if item is already in Apple then - just increase the quantity
-    if(existing){
+  addToApple: (item:AppleItem) => {
+    const { itemsApple } = get()
+    const existing = itemsApple.find((i) => i.id === item.id)
+
+    if (existing) {
       set({
-        items:items.map((i)=>
+        itemsApple: itemsApple.map((i) =>
           i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
-        )
+        ),
       })
-    }
-    else{
-      set({items :[...items, { ...item, quantity: 1 }] })
+    } else {
+      set({ itemsApple: [...itemsApple, { ...item, quantity: 1 }] })
     }
   },
 
   removeFromApple: (id) => {
     set((state) => ({
-      items: state.items.filter((item) => item.id !== id),
+      itemsApple: state.itemsApple.filter((item) => item.id !== id),
     }))
   },
 
   
-  increaseQty: (id) => {
+  increaseQtyApple: (id) => {
     set((state) => ({
-      items: state.items.map((item) =>
+      itemsApple: state.itemsApple.map((item) =>
         item.id === id ? { ...item, quantity: item.quantity + 1 } : item
       ),
     }))
   },
 
-  // decrease the qty by 1
-  decreaseQty: (id) => {
+  // decrease the QtyApple by 1
+  decreaseQtyApple: (id) => {
     set((state) => ({
-      items: state.items
+      itemsApple: state.itemsApple
         .map((item) =>
           item.id === id
             ? { ...item, quantity: item.quantity >= 1 ? item.quantity - 1 : 0 }
@@ -82,7 +79,7 @@ export const useAppleStore = create<AppleStore>((set, get) => ({
     }))
   },
   // empty the Apple
-  clearApple: () => set({ items:[]}),
-  totalItems: 0,
-  totalPrice: 0,
+  clearApple: () => set({ itemsApple:[]}),
+  totalItemsApple: 0,
+  totalPriceApple: 0,
 }))

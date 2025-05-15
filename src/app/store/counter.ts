@@ -1,19 +1,20 @@
-import { create } from 'zustand'
+// import { create } from 'zustand'
 
-type counterStore = {
-    count : number
-    increase : ()  => void
-    decrease : ()  => void
-    reset : () => void
-}
+// type counterStore = {
+//     count : number
+//     increase : ()  => void
+//     decrease : ()  => void
+//     reset : () => void
+// }
 
-export const useCounterStore = create<counterStore>((set) => ({
-    count : 0,
-    increase: () => set((state)=> ({
-        count : state.count+1
-    })),
-    decrease :() => set((state) => ({
-        count : state.count-1
-    })),
-    reset: () => set({count:0})
-}))
+// export const useCounterStore = create<counterStore>((set) => ({
+//     count : 0,
+//     increase: () => set((state)=> ({
+//         count : state.count+1
+//     })),
+//     decrease :() => set((state) => ({
+//         count : state.count-1
+//     })),
+//     reset: () => set({count:0})
+
+// }))

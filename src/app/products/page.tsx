@@ -10,8 +10,15 @@ const sampleProducts = [
   { id: '4', title: 'Ipad', price: 14999, image: '/ipad.jpg' },
   { id: '5', title: 'Speakers', price: 6999, image: '/speakers.jpg' },
   { id: '6', title: 'Airpods', price: 11999, image: '/airpods.jpg' },
+  { id: '7', title: 'Ipod', price: 499, image: '/airpods.jpg' },
+  { id: '8', title: 'Laptop', price: 89999, image: '/computer.jpg' },
+  { id: '9', title: 'Headphones', price: 999, image: '/headphones.jpg' },
+  { id: '10', title: 'SmartPhone', price: 21999, image: '/mobile.jpg' },
+  { id: '12', title: 'Ipad', price: 14999, image: '/ipad.jpg' },
+  { id: '13', title: 'Speakers', price: 6999, image: '/speakers.jpg' },
+  { id: '14', title: 'Airpods', price: 11999, image: '/airpods.jpg' },
+  { id: '15', title: 'Ipod', price: 499, image: '/airpods.jpg' },
 ]
-
 export default function Page() {
   return (
     <div className="p-6">
