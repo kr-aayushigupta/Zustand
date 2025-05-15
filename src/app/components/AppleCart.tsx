@@ -4,7 +4,6 @@ import { useAppleStore } from '../store/AppleStore'
 export default function AppleApple() {
   const { itemsApple, removeFromApple, increaseQtyApple, decreaseQtyApple , clearApple, totalItemsApple} = useAppleStore()
   const total = itemsApple.reduce((sum, item) => sum + item.price * item.quantity, 0)
-
   return (
     <div className="  p-4 z-50 overflow-y-auto">
       <h2 className="text-xl font-bold mb-4 flex justify-between">

@@ -1,6 +1,5 @@
 'use client'
 import { useCartStore } from '../store/cartStore'
-
 export default function ProductCard({ product }: { product: any }) {
   const addToCart = useCartStore((s) => s.addToCart)
   return (
@@ -14,8 +13,7 @@ export default function ProductCard({ product }: { product: any }) {
         }}
         className="mt-2 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
       >
-      Add to Cart
-
+          Add to Cart
       </button>
     </div>
   )
